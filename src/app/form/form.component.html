@@ -8,15 +8,14 @@
               <span class="main-block__title">Выбор получателя</span>
             </div>
           </div>
-          <form [formGroup]="myForm">
               <div class="row mt-30 align-items-center">
                 <div class="col-6">
-                  <input type="text" class="input-search" placeholder="Search">
+                  <input type="text" [(ngModel)]="searchText" class="input-search" placeholder="Search">
                 </div>
                 <div class="col-6">
                   <div class="d-flex align-items-center">
                     <img src="../assets/images/visible.svg"
-                         class="icon"
+                         class="icon red-shadow"
                          alt="">
                     <img src="../assets/images/star.svg"
                          class="icon"
@@ -30,10 +29,12 @@
                   </div>
                 </div>
               </div>
+          <form [formGroup]="myForm">
               <div class="row mt-15 users">
                 <div class="col-12">
+
                   <ng-container formArrayName="users">
-                  <div class="d-flex justify-content-between mt-15" *ngFor="let user of users; let idx = index;">
+                  <div class="d-flex justify-content-between mt-15" *ngFor="let user of Users; let idx = index;">
                     <ng-container [formGroupName]="idx">
                       <div class="users__left-side d-flex align-items-center">
                         <img src="../assets/images/{{ user.img }}">

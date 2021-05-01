@@ -5,6 +5,10 @@
 }
 
 
+.red-shadow {
+  filter: drop-shadow(2px 10px 22px rgba(220, 30, 30, 0.36));
+}
+
 .input-search {
   width: 197px;
   height: 38px;

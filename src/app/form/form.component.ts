@@ -34,8 +34,8 @@ export class FormComponent implements OnInit {
     },
     {
       id: 5,
-      name: 'Темирлан Темирбиев',
-      position: 'Супервайзер',
+      name: 'Фатеев Илья',
+      position: 'Разработчик',
       img: 'man.png'
     },
     {
@@ -62,6 +62,8 @@ export class FormComponent implements OnInit {
 
   public myForm: FormGroup;
 
+  public searchText = '';
+
   constructor() {
     this.myForm = new FormGroup({
       users: new FormArray([])
@@ -87,5 +89,9 @@ export class FormComponent implements OnInit {
     if (this.myForm.valid) {
         console.log((this.myForm.get('users').value as []).filter(user => user['selected']), 'Массив отправки');
     }
+  }
+
+  get Users() {
+    return this.users.filter(user => user.name.toLowerCase().includes(this.searchText.toLowerCase()));
   }
 }
