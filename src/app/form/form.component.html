@@ -8,60 +8,64 @@
               <span class="main-block__title">Выбор получателя</span>
             </div>
           </div>
-          <form action="" formGroup="myForm">
-            <div class="row mt-30 align-items-center">
-              <div class="col-6">
-                <input type="text" class="input-search" placeholder="Search">
-              </div>
-              <div class="col-6">
-                <div class="d-flex align-items-center">
-                  <img src="../assets/images/visible.svg"
-                       class="icon"
-                       alt="">
-                  <img src="../assets/images/star.svg"
-                       class="icon"
-                       alt="">
-                  <img src="../assets/images/plus.svg"
-                       class="icon"
-                       alt="">
-                  <img src="../assets/images/edit.svg"
-                       class="icon"
-                       alt="">
+          <form [formGroup]="myForm">
+              <div class="row mt-30 align-items-center">
+                <div class="col-6">
+                  <input type="text" class="input-search" placeholder="Search">
+                </div>
+                <div class="col-6">
+                  <div class="d-flex align-items-center">
+                    <img src="../assets/images/visible.svg"
+                         class="icon"
+                         alt="">
+                    <img src="../assets/images/star.svg"
+                         class="icon"
+                         alt="">
+                    <img src="../assets/images/plus.svg"
+                         class="icon"
+                         alt="">
+                    <img src="../assets/images/edit.svg"
+                         class="icon"
+                         alt="">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="row mt-15 users">
-              <div class="col-12">
-                <div class="d-flex justify-content-between mt-15" *ngFor="let user of users">
-                  <div class="users__left-side d-flex align-items-center">
-                    <img src="../assets/images/{{ user.img }}">
-                    <div class="d-flex flex-column ml-10">
-                      <span class="users-name">{{ user.name }}</span>
-                      <span class="users-position">{{ user.position }}</span>
+              <div class="row mt-15 users">
+                <div class="col-12">
+                  <ng-container formArrayName="users">
+                  <div class="d-flex justify-content-between mt-15" *ngFor="let user of users; let idx = index;">
+                    <ng-container [formGroupName]="idx">
+                      <div class="users__left-side d-flex align-items-center">
+                        <img src="../assets/images/{{ user.img }}">
+                        <div class="d-flex flex-column ml-10">
+                          <span class="users-name">{{ user.name }}</span>
+                          <span class="users-position">{{ user.position }}</span>
+                        </div>
+                      </div>
+                      <div class="users__right-side" >
+                        <label class="container-checkbox">
+                          <input type="checkbox" [value]="user.id" formControlName="selected">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                    </ng-container>
+                  </div>
+                  </ng-container>
+                </div>
+              </div>
+              <div class="row mt-45">
+                <div class="col-12">
+                  <div class="d-flex justify-content-end">
+                    <div class="btn btn-cancel" (click)="cancel()">
+                      Отмена
+                    </div>
+                    <div class="btn btn-send ml-10" (click)="send()">
+                      Отправить
                     </div>
                   </div>
-                  <div class="users__right-side">
-                    <label class="container-checkbox">
-                      <input type="checkbox">
-                      <span class="checkmark"></span>
-                    </label>
-                  </div>
                 </div>
+              </div>
 
-              </div>
-            </div>
-            <div class="row mt-45">
-              <div class="col-12">
-                <div class="d-flex justify-content-end">
-                  <div class="btn btn-cancel">
-                    Отмена
-                  </div>
-                  <div class="btn btn-send ml-10">
-                    Отправить
-                  </div>
-                </div>
-              </div>
-            </div>
           </form>
         </div>
       </div>
