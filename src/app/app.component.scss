@@ -1,0 +1,21 @@
+body {
+  height: 100vh;
+  background: #cccccc;
+}
+.mt {
+  &-15{
+    margin-top: 15px;
+  }
+  &-30 {
+    margin-top: 30px;
+  }
+  &-45 {
+    margin-top: 45px;
+  }
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+

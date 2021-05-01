@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "test-mpulse"
+    }
+  },
+  "defaultProject": "test-mpulse",
+  "cli": {
+    "analytics": "99b2e1be-193b-47d0-a18f-0f76e214d63e"
+  }
 }
